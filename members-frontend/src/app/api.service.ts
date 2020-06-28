@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   baseUrl = 'http://localhost:8000/';
-  httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  token  = 'Token 709953ede64deaa0532b5b1ce66c5e35fa9f730a';
+
+  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', this.token);
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +21,12 @@ export class ApiService {
 
   getMember(id) : Observable<any> {
     return this.http.get(this.baseUrl + 'members/' + id  + '/',
+    {headers: this.httpHeaders }
+    );
+  };
+
+  saveNewMember(member) : Observable<any> {
+    return this.http.post(this.baseUrl + 'members/', member,
     {headers: this.httpHeaders }
     );
   };

@@ -1,2 +1,16 @@
-<p>members-detail works!</p>
-Membro clicado: {{ selected_member.name }} - {{ selected_member.surname }}
+<h3>Member Detail Component</h3>
+
+Você está editando: {{ selected_member.name }} {{ selected_member.surname }}
+
+<span class="image left">
+    <img src="{{ selected_member.photo }}" alt="Foto de {{ selected_member.name }}">
+</span>
+
+<input type="text" [(ngModel)]="selected_member.id" readonly /><br />
+<input type="text" [(ngModel)]="selected_member.name" /><br />
+<input type="text" [(ngModel)]="selected_member.surname" /><br />
+<input type="text" [(ngModel)]="selected_member.phone" /><br />
+<button (click)="update()">Update Member</button>
+<button (click)="delete()">Delete Member</button>
+
+<button (click)="newMember()">New Member</button>
